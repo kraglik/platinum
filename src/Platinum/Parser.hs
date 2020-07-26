@@ -40,3 +40,55 @@ keywords = [str kw
         ]
     ]
 
+keyword = choice keywords <?> "keyword"
+
+hasType = string $ pack "::" :: Parser Text
+
+symbols     =   [
+    char x | 
+        x <- [
+            '_', 
+            '-', 
+            '+', 
+            '=', 
+            '?', 
+            '!', 
+            '|', 
+            '<', 
+            '>', 
+            '*',
+            '&',
+            '^',
+            '%',
+            '$',
+            '@'
+        ]
+    ]   :: [Parser Char]
+digits      =   [char x | x <- ['0'..'9']] :: [Parser Char]
+lowerABC    =   [char x | x <- ['a'..'z']] :: [Parser Char]
+upperABC    =   [char x | x <- ['A'..'Z']] :: [Parser Char]
+
+headIdent = lowerABC ++ upperABC ++ symbols
+headUpper = upperABC
+headLower = lowerABC ++ symbols
+tailIdent = digits ++ lowerABC ++ upperABC ++ symbols
+
+
+sc :: Parser ()
+sc = L.space
+  space1
+  (L.skipLineComment $ pack "//")
+  (L.skipBlockComment (pack "/*") (pack "*/"))
+
+lexeme :: Parser a -> Parser a
+lexeme = L.lexeme sc
+
+
+symbol :: Text -> Parser Text
+symbol = L.symbol sc
+
+str :: String -> Parser Text
+str c = string $ pack c
+
+lstr :: String -> Parser Text
+lstr c = lexeme $ lexeme $ string (pack c)
