@@ -1,4 +1,4 @@
-module ParserSpec where
+module Platinum.Parser.ADTSpec where
 
 import Test.Hspec
 import Platinum
@@ -7,7 +7,5 @@ import Platinum
 spec :: Spec
 spec = do
   describe "Platinum.AST" $ do
-    it "1 is equal to 1" $ do
+    it "parses ADT correctly" $ do
       1 `shouldBe` 1
-
-

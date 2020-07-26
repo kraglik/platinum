@@ -26,6 +26,7 @@ dependencies:
 - pretty-simple
 - llvm-hs
 - llvm-hs-pure
+- hspec
 - base >= 4.7 && < 5
 
 library:
@@ -43,12 +44,6 @@ executables:
     - Platinum
 
 tests:
-  Platinum-test:
-    main:                Spec.hs
-    source-dirs:         test
-    ghc-options:
-    - -threaded
-    - -rtsopts
-    - -with-rtsopts=-N
-    dependencies:
-    - Platinum
+  spec:
+    defaults: hspec/hspec@master
+    dependencies: Platinum
