@@ -24,6 +24,8 @@ dependencies:
 - indents
 - text
 - pretty-simple
+- llvm-hs
+- llvm-hs-pure
 - base >= 4.7 && < 5
 
 library:

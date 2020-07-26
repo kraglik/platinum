@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 34b2632721de4d29b8167037cd25419835ed2c94119a56130e522999f742ce18
+-- hash: 5c916b7d1f33198e2813d8be682d7c07cdcc49fe1872f587f019a3a79542b0a6
 
 name:           Platinum
 version:        0.1.0.0
@@ -35,6 +35,8 @@ library
   build-depends:
       base >=4.7 && <5
     , indents
+    , llvm-hs
+    , llvm-hs-pure
     , megaparsec
     , pretty-simple
     , text
@@ -51,6 +53,8 @@ executable Platinum-exe
       Platinum
     , base >=4.7 && <5
     , indents
+    , llvm-hs
+    , llvm-hs-pure
     , megaparsec
     , pretty-simple
     , text
@@ -68,6 +72,8 @@ test-suite Platinum-test
       Platinum
     , base >=4.7 && <5
     , indents
+    , llvm-hs
+    , llvm-hs-pure
     , megaparsec
     , pretty-simple
     , text
