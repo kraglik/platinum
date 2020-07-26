@@ -1,6 +1,6 @@
 module Main where
 
-import Lib
+import Platinum
 
 main :: IO ()
 main = someFunc

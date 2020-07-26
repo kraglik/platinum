@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 5c916b7d1f33198e2813d8be682d7c07cdcc49fe1872f587f019a3a79542b0a6
+-- hash: 6f1b7e5d89f6c211c044003fd4899788387f3047eea19403a0cc4b4852e8d79b
 
 name:           Platinum
 version:        0.1.0.0
@@ -27,7 +27,9 @@ source-repository head
 
 library
   exposed-modules:
-      Lib
+      Platinum
+      Platinum.AST
+      Platinum.Parser
   other-modules:
       Paths_Platinum
   hs-source-dirs:
@@ -64,6 +66,7 @@ test-suite Platinum-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
+      ParserSpec
       Paths_Platinum
   hs-source-dirs:
       test
