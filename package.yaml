@@ -27,6 +27,7 @@ dependencies:
 - llvm-hs
 - llvm-hs-pure
 - hspec
+- hspec-megaparsec
 - base >= 4.7 && < 5
 
 library:

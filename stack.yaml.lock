@@ -53,6 +53,13 @@ packages:
       sha256: 8128733a7ef4760bbe5d978f2145fdcb29f4491b17db11e8c05b409441ceecb4
   original:
     hackage: hspec-2.7.1
+- completed:
+    hackage: hspec-megaparsec-2.1.0@sha256:e4dfe9f9c750352f4ffaef4137ea907e457c5ac9042197e11f411f263296372a,2106
+    pantry-tree:
+      size: 385
+      sha256: 17337afa3964b6caee5d2e713a82c38a8909a509bea74c6d6855e1800c638f99
+  original:
+    hackage: hspec-megaparsec-2.1.0
 snapshots:
 - completed:
     size: 531718

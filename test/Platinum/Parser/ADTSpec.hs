@@ -2,6 +2,7 @@ module Platinum.Parser.ADTSpec where
 
 import Test.Hspec
 import Platinum
+import Platinum.Parser
 
 
 spec :: Spec

@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: b8ed9dd8599260706711f0cd9e47baa94d6fe0652c536379cfff4e199cbaa77e
+-- hash: e6e330366703d8b1580033583110e633f36987ea744bff8c04ab83ad39a1b22e
 
 name:           Platinum
 version:        0.1.0.0
@@ -37,6 +37,7 @@ library
   build-depends:
       base >=4.7 && <5
     , hspec
+    , hspec-megaparsec
     , indents
     , llvm-hs
     , llvm-hs-pure
@@ -56,6 +57,7 @@ executable Platinum-exe
       Platinum
     , base >=4.7 && <5
     , hspec
+    , hspec-megaparsec
     , indents
     , llvm-hs
     , llvm-hs-pure
@@ -69,6 +71,7 @@ test-suite spec
   main-is: Spec.hs
   other-modules:
       Platinum.Parser.ADTSpec
+      Platinum.Parser.LiteralSpec
       Platinum.Parser.TypeClassSpec
       Paths_Platinum
   hs-source-dirs:
@@ -77,6 +80,7 @@ test-suite spec
       Platinum
     , base >=4.7 && <5
     , hspec ==2.*
+    , hspec-megaparsec
     , indents
     , llvm-hs
     , llvm-hs-pure

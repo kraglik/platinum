@@ -137,7 +137,7 @@ data Binding
     = Binding 
         { publicBinding     :: !Bool
         , bindingName       :: !Var
-        , bindingValue      :: !Expr
+        , bindingValue      :: !Expression
         , bindingType       :: !(Maybe Scheme)
         , bindingPos        :: !SrcPos
         }
@@ -151,33 +151,33 @@ data Variant
 
 
 data Statement
-    = Expr !Expr !SrcPos
+    = Expr !Expression !SrcPos
     | For !Iterator !Suite !SrcPos
-    | While !Expr !Suite !SrcPos
+    | While !Expression !Suite !SrcPos
     | Definition !Definition !SrcPos
-    | Let !Bool !Var !Expr !(Maybe Scheme) !SrcPos
+    | Let !Bool !Var !Expression !(Maybe Scheme) !SrcPos
     | TypeInformation !TypeInfo
     | Func !Function
-    | Return !Expr !SrcPos
+    | Return !Expression !SrcPos
     deriving (Eq, Show, Data)
 
 
-data Expr
+data Expression
     = Variable          !Var !SrcPos
-    | Constructor       !Cons ![Expr] !SrcPos
-    | RecordUpdate      !Var ![(Var, Expr)] !SrcPos
-    | RecordInstance    !Cons ![(Var, Expr)] !SrcPos
+    | Constructor       !Cons ![Expression] !SrcPos
+    | RecordUpdate      !Var ![(Var, Expression)] !SrcPos
+    | RecordInstance    !Cons ![(Var, Expression)] !SrcPos
     | Literal           !Literal !SrcPos
-    | Tuple             ![Expr] !SrcPos
-    | List              ![Expr] !SrcPos
+    | Tuple             ![Expression] !SrcPos
+    | List              ![Expression] !SrcPos
     | Ellipsis          !SrcPos
-    | ListComprehension !Expr ![Iterator] !SrcPos
-    | If                !Expr !Expr !(Maybe Expr)
-    | Match             !Expr ![Guard] !SrcPos
-    | RecordField       !Expr !Var !SrcPos
-    | Call              !Expr ![Expr] !SrcPos
-    | InfixCall         !Expr !Var !Expr !SrcPos
-    | PrefixCall        !Var !Expr !SrcPos
+    | ListComprehension !Expression ![Iterator] !SrcPos
+    | If                !Expression !Expression !(Maybe Expression)
+    | Match             !Expression ![Guard] !SrcPos
+    | RecordField       !Expression !Var !SrcPos
+    | Call              !Expression ![Expression] !SrcPos
+    | InfixCall         !Expression !Var !Expression !SrcPos
+    | PrefixCall        !Var !Expression !SrcPos
     | Lambda            ![Var] !Suite !SrcPos
     deriving (Eq, Show, Data)
 
@@ -205,8 +205,8 @@ data Scheme = Scheme !Forall !Context !Signature !SrcPos deriving (Eq, Show, Dat
 
 data Iterator
     = Iterator 
-        { iterable      :: !Expr
-        , target        :: !Expr
+        { iterable      :: !Expression
+        , target        :: !Expression
         , iteratorPos   :: !SrcPos
         }
     deriving (Eq, Show, Data)
@@ -214,8 +214,8 @@ data Iterator
 
 data Guard
     = Guard
-        { matchExpr :: !Expr
-        , matchCond :: !(Maybe Expr)
+        { matchExpr :: !Expression
+        , matchCond :: !(Maybe Expression)
         , matchBody :: !Suite
         }
     deriving (Eq, Show, Data)
